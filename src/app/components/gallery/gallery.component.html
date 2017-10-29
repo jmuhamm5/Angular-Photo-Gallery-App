@@ -8,8 +8,11 @@
   <button class="btn btn-lg btn-info" [class.active]="filterBy=='vietnamese food'" (click)="filterBy='vietnamese food'">Vietnamese Food</button>
   <button class="btn btn-lg btn-info" [class.active]="filterBy=='tourism'" (click)="filterBy='tourism'">Tourism</button>
   <ul id="thumbnailsList">
-    <li *ngFor="let image of visibleImages">
-        <img src="{{image.url}}" class="tn" width="200" height="160" />
+    <li *ngFor="let image of (visibleImages | filter:filterBy)">
+      <a [routerLink]="['/image', image.id]" href="">
+          <img src="{{image.url}}" class="tn" width="200" height="160" />
+      </a>
+
     </li>
   </ul>
 </div>

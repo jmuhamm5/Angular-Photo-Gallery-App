@@ -5,8 +5,14 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class FilterPipe implements PipeTransform {
 
-  transform(value: any, args?: any): any {
-    return null;
+  transform(items: any[], criteria: string): any {
+    if(criteria === 'all') {
+      return items;
+    } else {
+      return items.filter(item => {
+        return item.category === criteria;
+      });
+    }
   }
 
 }
